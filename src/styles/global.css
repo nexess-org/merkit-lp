@@ -1,1 +1,59 @@
 @import "tailwindcss";
+
+@theme {
+  /* Primary - Mercari red */
+  --color-primary-50: #fef2f2;
+  --color-primary-100: #fee2e2;
+  --color-primary-200: #fecaca;
+  --color-primary-300: #fca5a5;
+  --color-primary-400: #f87171;
+  --color-primary-500: #ef4444;
+  --color-primary-600: #dc2626;
+  --color-primary-700: #b91c1c;
+
+  /* Fonts */
+  --font-sans: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
+}
+
+/* Hero gradient background */
+.hero-gradient {
+  background: linear-gradient(180deg, #fef2f2 0%, #ffffff 100%) !important;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+}
+
+/* CTA gradient */
+.cta-gradient {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+}
+
+/* Footer gradient */
+.footer-gradient {
+  background: linear-gradient(180deg, #111827 0%, #1f2937 100%) !important;
+}
+
+/* Glow effect for buttons */
+.btn-glow {
+  box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.4);
+}
+.btn-glow:hover {
+  box-shadow: 0 6px 20px 0 rgba(239, 68, 68, 0.5);
+}
+
+/* Icon container gradient */
+.icon-gradient {
+  background: linear-gradient(135deg, #ef4444 0%, #f87171 100%) !important;
+}
+
+/* Subtle pattern for sections */
+.pattern-dots {
+  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+  background-size: 20px 20px;
+}

@@ -1,0 +1,47 @@
+---
+const steps = [
+  {
+    number: "1",
+    title: "拡張機能をインストール",
+    description: "Chrome ウェブストアから Merkit を追加",
+  },
+  {
+    number: "2",
+    title: "商品を選択",
+    description: "出品一覧ページで対象商品にチェック",
+  },
+  {
+    number: "3",
+    title: "設定して実行",
+    description: "価格変更またはコメントの設定を入力して実行",
+  },
+];
+---
+
+<section class="py-24 md:py-32 bg-gray-50 pattern-dots">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <div class="inline-block mb-4 px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-sm font-medium">
+        How to Use
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">使い方</h2>
+      <p class="text-gray-600 text-lg">3ステップで簡単に始められます</p>
+    </div>
+
+    <div class="space-y-6">
+      {
+        steps.map((step, index) => (
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex items-start gap-6 card-hover">
+            <div class="w-14 h-14 icon-gradient text-white rounded-2xl flex items-center justify-center font-bold text-xl shrink-0">
+              {step.number}
+            </div>
+            <div class="pt-2">
+              <h3 class="text-xl font-bold text-gray-900 mb-1">{step.title}</h3>
+              <p class="text-gray-600">{step.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
