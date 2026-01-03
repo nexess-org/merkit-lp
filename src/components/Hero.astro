@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import Button from "./Button.astro";
+import heroScreenshot from "../../public/images/hero-screenshot.png";
 
 interface Props {
   ctaUrl: string;
@@ -39,8 +41,8 @@ const { ctaUrl } = Astro.props;
     <!-- Screenshot -->
     <div class="mt-16 max-w-xs mx-auto">
       <div class="bg-white rounded-2xl p-3 shadow-2xl border border-gray-100">
-        <img
-          src="/images/hero-screenshot.png"
+        <Image
+          src={heroScreenshot}
           alt="Merkit 拡張機能の価格変更画面"
           class="rounded-xl w-full"
         />
