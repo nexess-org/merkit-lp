@@ -1,16 +1,24 @@
 ---
+import Layout from "../components/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Features from "../components/Features.astro";
+import HowToUse from "../components/HowToUse.astro";
+import Footer from "../components/Footer.astro";
 
+// TODO: Replace with actual Chrome Web Store URL before deployment
+const chromeStoreUrl = "#";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Merkit - メルカリ価格一括変更ツール"
+  description="Merkitは、メルカリの出品価格を一括で変更できる無料のChrome拡張機能です。値下げ・値上げを効率化しましょう。"
+>
+  <Header ctaUrl={chromeStoreUrl} />
+  <main>
+    <Hero ctaUrl={chromeStoreUrl} />
+    <Features />
+    <HowToUse />
+    <Footer ctaUrl={chromeStoreUrl} />
+  </main>
+</Layout>

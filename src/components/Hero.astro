@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import heroScreenshot from "../../public/images/hero-screenshot.png";
+
+interface Props {
+  ctaUrl: string;
+}
+
+const { ctaUrl } = Astro.props;
+---
+
+<section class="hero-gradient min-h-screen flex items-center pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute top-20 left-10 w-72 h-72 bg-primary-100 rounded-full blur-3xl opacity-50"></div>
+  <div class="absolute bottom-20 right-10 w-96 h-96 bg-primary-50 rounded-full blur-3xl opacity-50"></div>
+
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+    <div class="inline-block mb-6 px-4 py-2 bg-primary-100 text-primary-600 rounded-full text-sm font-medium">
+      メルカリ出品者のための自動化ツール
+    </div>
+
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
+      メルカリの面倒な作業を、<br />
+      <span class="text-primary-500">一括で。</span>
+    </h1>
+    <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+      価格変更もコメント投稿も、まとめて自動化。<br class="hidden md:block" />
+      何時間もかかる作業を、数分で完了。
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <Button href={ctaUrl} variant="primary" size="lg">
+        無料でChromeに追加
+      </Button>
+      <a href="#features" class="text-gray-600 hover:text-primary-500 font-medium transition-colors">
+        機能を見る →
+      </a>
+    </div>
+
+    <!-- Screenshot -->
+    <div class="mt-16 max-w-xs mx-auto">
+      <div class="bg-white rounded-2xl p-3 shadow-2xl border border-gray-100">
+        <Image
+          src={heroScreenshot}
+          alt="Merkit 拡張機能の価格変更画面"
+          class="rounded-xl w-full"
+        />
+      </div>
+    </div>
+  </div>
+</section>

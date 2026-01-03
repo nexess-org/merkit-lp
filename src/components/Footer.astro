@@ -1,0 +1,45 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  ctaUrl: string;
+}
+
+const { ctaUrl } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<!-- Final CTA Section -->
+<section class="py-24 md:py-32 cta-gradient relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 left-0 w-full h-full">
+    <div class="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+      今すぐ始めよう
+    </h2>
+    <p class="text-white/80 text-lg mb-10 max-w-xl mx-auto">
+      無料でインストール。数分後には、<br class="hidden md:block" />
+      価格変更作業が効率化されています。
+    </p>
+    <Button href={ctaUrl} variant="secondary" size="lg">
+      無料でChromeに追加
+    </Button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer-gradient py-12">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="text-2xl font-bold text-white">Merkit</div>
+      <div class="flex items-center gap-8 text-gray-400 text-sm">
+        <a href="#features" class="hover:text-white transition-colors">機能</a>
+        <span class="text-gray-600">&copy; {currentYear} Merkit</span>
+      </div>
+    </div>
+  </div>
+</footer>

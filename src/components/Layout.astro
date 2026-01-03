@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <!-- TODO: Add og:image after icon is finalized -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- TODO: Update favicon after icon is finalized -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-white text-gray-800 font-sans antialiased">
+    <slot />
+  </body>
+</html>
