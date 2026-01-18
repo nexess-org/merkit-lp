@@ -1,0 +1,100 @@
+---
+const faqs = [
+  {
+    question: "BANされるリスクはありますか？",
+    answer: "Merkitは操作の間にランダムな遅延（3〜7秒）を自動で挿入し、人間らしい動作を再現しています。これにより、自動操作の検知リスクを最小限に抑えています。ただし、ご利用は自己責任でお願いいたします。",
+  },
+  {
+    question: "無料トライアル後は自動で課金されますか？",
+    answer: "はい。7日間の無料トライアル終了後、自動的に月額2,980円（税込）が課金されます。トライアル期間中に解約すれば課金は発生しません。",
+  },
+  {
+    question: "解約はすぐにできますか？",
+    answer: "はい、いつでも解約可能です。解約手続きは管理画面から数クリックで完了します。解約後も、課金期間の終了まではサービスをご利用いただけます。",
+  },
+  {
+    question: "対応ブラウザは？",
+    answer: "現在はGoogle Chromeのみ対応しています。Chromeウェブストアからインストールしてご利用ください。",
+  },
+  {
+    question: "複数のメルカリアカウントで使えますか？",
+    answer: "Merkitは1つのサブスクリプションで、複数のメルカリアカウントでご利用いただけます。ただし、同時に複数のブラウザやPCでの同時利用はできません。",
+  },
+  {
+    question: "テンプレートの変数機能とは何ですか？",
+    answer: "コメントテンプレートに {{商品名}} や {{価格}} と入力すると、投稿時に各商品の実際の商品名や価格に自動で置き換わります。例：「{{商品名}}をご覧いただきありがとうございます！」",
+  },
+];
+---
+
+<section id="faq" class="py-20 md:py-28 bg-cream-50 relative">
+  <div class="max-w-3xl mx-auto px-6">
+    <!-- Section header -->
+    <div class="text-center max-w-2xl mx-auto scroll-reveal">
+      <span class="badge badge-muted">FAQ</span>
+      <h2 class="mt-4 text-3xl md:text-4xl font-display font-bold text-ink-900 tracking-tight">
+        よくある質問
+      </h2>
+      <p class="mt-4 text-ink-600 leading-relaxed">
+        ご利用前の疑問にお答えします
+      </p>
+    </div>
+
+    <!-- FAQ list -->
+    <div class="mt-12 space-y-4">
+      {faqs.map((faq, index) => (
+        <details
+          class="group card scroll-reveal"
+          style={`transition-delay: ${index * 0.05}s`}
+        >
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <h3 class="text-ink-900 font-medium pr-4">{faq.question}</h3>
+            <span class="shrink-0 w-8 h-8 rounded-full bg-cream-100 flex items-center justify-center group-open:bg-accent-100 transition-colors">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-4 h-4 text-ink-500 group-open:text-accent-500 group-open:rotate-180 transition-transform"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6">
+            <p class="text-ink-600 text-sm leading-relaxed">{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- Still have questions -->
+    <div class="mt-12 text-center scroll-reveal" style="transition-delay: 0.4s;">
+      <p class="text-ink-500">
+        他にご質問がありましたら、
+        <a href="#contact" class="text-accent-500 hover:text-accent-600 underline underline-offset-2">
+          お問い合わせ
+        </a>
+        からお気軽にどうぞ
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('#faq .scroll-reveal').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

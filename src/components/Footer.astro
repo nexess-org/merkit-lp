@@ -1,6 +1,4 @@
 ---
-import Button from "./Button.astro";
-
 interface Props {
   ctaUrl: string;
 }
@@ -10,36 +8,89 @@ const currentYear = new Date().getFullYear();
 ---
 
 <!-- Final CTA Section -->
-<section class="py-24 md:py-32 cta-gradient relative overflow-hidden">
+<section class="py-20 md:py-28 bg-ink-900 relative overflow-hidden">
   <!-- Decorative elements -->
-  <div class="absolute top-0 left-0 w-full h-full">
-    <div class="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 right-10 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-  </div>
+  <div class="absolute top-0 left-0 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+  <div class="absolute bottom-0 right-0 w-72 h-72 bg-accent-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
   <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
-    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-      今すぐ始めよう
-    </h2>
-    <p class="text-white/80 text-lg mb-10 max-w-xl mx-auto">
-      無料でインストール。数分後には、<br class="hidden md:block" />
-      価格変更作業が効率化されています。
-    </p>
-    <Button href={ctaUrl} variant="secondary" size="lg">
-      無料でChromeに追加
-    </Button>
+    <div class="scroll-reveal">
+      <!-- Trial badge -->
+      <span class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 text-white/90 text-sm font-medium rounded-full mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-green-400">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+        </svg>
+        1週間無料トライアル
+      </span>
+
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white tracking-tight">
+        今すぐ始めよう
+      </h2>
+      <p class="mt-4 text-ink-300 text-lg max-w-xl mx-auto">
+        面倒な価格変更作業から解放されましょう。<br class="hidden md:block" />
+        1週間の無料トライアルで、効果を実感してください。
+      </p>
+
+      <div class="mt-10">
+        <a
+          href={ctaUrl}
+          class="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold text-ink-900 bg-white rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all group"
+        >
+          <span>無料で始める</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+
+      <p class="mt-4 text-ink-400 text-sm">
+        ¥2,980/月・いつでもキャンセル可能
+      </p>
+    </div>
   </div>
 </section>
 
 <!-- Footer -->
-<footer class="footer-gradient py-12">
+<footer class="bg-ink-900 py-12 border-t border-white/10">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="text-2xl font-bold text-white">Merkit</div>
-      <div class="flex items-center gap-8 text-gray-400 text-sm">
-        <a href="#features" class="hover:text-white transition-colors">機能</a>
-        <span class="text-gray-600">&copy; {currentYear} Merkit</span>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <img src="/favicon.png" alt="Merkit" class="w-8 h-8 rounded-lg" />
+        <span class="text-xl font-display font-bold text-white tracking-tight">Merkit</span>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="flex flex-wrap justify-center items-center gap-8 text-sm">
+        <a href="#features" class="text-ink-300 hover:text-white transition-colors">機能</a>
+        <a href="#demo" class="text-ink-300 hover:text-white transition-colors">デモ</a>
+        <a href="#how-to-use" class="text-ink-300 hover:text-white transition-colors">使い方</a>
+        <a href="#pricing" class="text-ink-300 hover:text-white transition-colors">料金</a>
+        <a href="#reviews" class="text-ink-300 hover:text-white transition-colors">レビュー</a>
+        <a href="#contact" class="text-ink-300 hover:text-white transition-colors">お問い合わせ</a>
+      </nav>
+
+      <!-- Copyright -->
+      <div class="text-ink-400 text-sm">
+        &copy; {currentYear} Merkit. All rights reserved.
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('section:last-of-type .scroll-reveal').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

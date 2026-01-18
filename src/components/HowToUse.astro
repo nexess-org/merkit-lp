@@ -1,47 +1,85 @@
 ---
 const steps = [
   {
-    number: "1",
+    number: "01",
+    title: "無料登録",
+    description: "アカウントを作成してクレジットカードを登録。最初の1週間は無料でお試しいただけます。",
+  },
+  {
+    number: "02",
     title: "拡張機能をインストール",
-    description: "Chrome ウェブストアから Merkit を追加",
+    description: "Chrome ウェブストアからMerkitをインストール。ワンクリックで追加できます。",
   },
   {
-    number: "2",
+    number: "03",
     title: "商品を選択",
-    description: "出品一覧ページで対象商品にチェック",
+    description: "メルカリの出品一覧ページで、変更したい商品にチェックを入れます。",
   },
   {
-    number: "3",
+    number: "04",
     title: "設定して実行",
-    description: "価格変更またはコメントの設定を入力して実行",
+    description: "価格変更やコメントの設定を入力して実行。あとは自動で処理されます。",
   },
 ];
 ---
 
-<section class="py-24 md:py-32 bg-gray-50 pattern-dots">
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <div class="inline-block mb-4 px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-sm font-medium">
-        How to Use
-      </div>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">使い方</h2>
-      <p class="text-gray-600 text-lg">3ステップで簡単に始められます</p>
+<section id="how-to-use" class="py-20 md:py-28 bg-cream-100">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Section header -->
+    <div class="text-center max-w-2xl mx-auto scroll-reveal">
+      <span class="badge badge-muted">使い方</span>
+      <h2 class="mt-4 text-3xl md:text-4xl font-display font-bold text-ink-900 tracking-tight">
+        4ステップで完了
+      </h2>
+      <p class="mt-4 text-ink-600 leading-relaxed">
+        シンプルなステップで、すぐに使い始められます。
+      </p>
     </div>
 
-    <div class="space-y-6">
-      {
-        steps.map((step) => (
-          <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex items-start gap-6 card-hover">
-            <div class="w-14 h-14 icon-gradient text-white rounded-2xl flex items-center justify-center font-bold text-xl shrink-0">
+    <!-- Steps -->
+    <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {steps.map((step, index) => (
+        <div class="scroll-reveal" style={`transition-delay: ${index * 0.1}s`}>
+          <div class="relative">
+            <!-- Number -->
+            <span class="text-7xl font-display font-bold text-cream-300 leading-none">
               {step.number}
+            </span>
+
+            <!-- Content -->
+            <div class="mt-4">
+              <h3 class="text-lg font-display font-semibold text-ink-900 mb-2">
+                {step.title}
+              </h3>
+              <p class="text-sm text-ink-600 leading-relaxed">
+                {step.description}
+              </p>
             </div>
-            <div class="pt-2">
-              <h3 class="text-xl font-bold text-gray-900 mb-1">{step.title}</h3>
-              <p class="text-gray-600">{step.description}</p>
-            </div>
+
+            <!-- Connector line (except last) -->
+            {index < steps.length - 1 && (
+              <div class="hidden lg:block absolute top-8 left-full w-full h-px bg-cream-300 -translate-x-4"></div>
+            )}
           </div>
-        ))
-      }
+        </div>
+      ))}
     </div>
   </div>
 </section>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('#how-to-use .scroll-reveal').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

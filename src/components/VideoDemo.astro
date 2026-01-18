@@ -1,0 +1,124 @@
+---
+// TODO: Replace with actual video URL
+const videoUrl = "";
+const isYouTube = videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be');
+---
+
+<section id="demo" class="py-20 md:py-28 bg-cream-50 relative overflow-hidden">
+  <!-- Background accent -->
+  <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent-100/30 to-transparent"></div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="grid lg:grid-cols-5 gap-12 items-center">
+      <!-- Left: Content -->
+      <div class="lg:col-span-2 scroll-reveal">
+        <span class="badge badge-accent">デモ</span>
+        <h2 class="mt-4 text-3xl md:text-4xl font-display font-bold text-ink-900 tracking-tight">
+          実際の操作を<br />
+          見てみましょう
+        </h2>
+        <p class="mt-4 text-ink-600 leading-relaxed">
+          たった数クリックで、何百もの商品価格を一括変更。
+          直感的なUIで、誰でもすぐに使いこなせます。
+        </p>
+
+        <!-- Key points -->
+        <div class="mt-8 space-y-4">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-green-600">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-medium text-ink-900">高速処理</p>
+              <p class="text-sm text-ink-500">100件の変更も数分で完了</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-blue-600">
+                <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-medium text-ink-900">安全設計</p>
+              <p class="text-sm text-ink-500">BAN対策の遅延機能を搭載</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-purple-600">
+                <path d="M10 1a6 6 0 00-3.815 10.631C7.237 12.5 8 13.443 8 14.456v.644a.75.75 0 00.572.729 6.016 6.016 0 002.856 0A.75.75 0 0012 15.1v-.644c0-1.013.762-1.957 1.815-2.825A6 6 0 0010 1zM8.863 17.414a.75.75 0 00-.226 1.483 9.066 9.066 0 002.726 0 .75.75 0 00-.226-1.483 7.553 7.553 0 01-2.274 0z" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-medium text-ink-900">シンプル操作</p>
+              <p class="text-sm text-ink-500">直感的なUIで誰でも使える</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Video -->
+      <div class="lg:col-span-3 scroll-reveal" style="transition-delay: 0.2s;">
+        <div class="relative">
+          <!-- Decorative -->
+          <div class="absolute -top-4 -left-4 w-24 h-24 bg-accent-100 rounded-2xl -z-10"></div>
+          <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-cream-200 rounded-2xl -z-10"></div>
+
+          <!-- Video container -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-xl shadow-ink-900/10 border border-cream-200">
+            {videoUrl ? (
+              isYouTube ? (
+                <iframe
+                  src={videoUrl}
+                  title="Merkit デモ動画"
+                  class="w-full aspect-video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              ) : (
+                <video
+                  src={videoUrl}
+                  controls
+                  class="w-full aspect-video object-cover"
+                  poster="/images/video-poster.jpg"
+                >
+                  <track kind="captions" />
+                </video>
+              )
+            ) : (
+              <div class="w-full aspect-video bg-cream-100 flex flex-col items-center justify-center">
+                <div class="w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center mb-4 cursor-pointer hover:scale-105 transition-transform">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-accent-500 ml-1">
+                    <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <p class="text-ink-600 font-medium">デモ動画</p>
+                <p class="text-sm text-ink-400 mt-1">Coming Soon</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('#demo .scroll-reveal').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

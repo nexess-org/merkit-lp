@@ -6,45 +6,78 @@ interface Props {
 const { ctaUrl } = Astro.props;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+<header class="fixed top-0 left-0 right-0 z-50 bg-cream-50/80 backdrop-blur-xl border-b border-cream-300/50">
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex items-center justify-between h-16">
-      <a href="/" class="text-xl font-bold text-gray-900">
-        Merkit
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 group">
+        <img src="/favicon.png" alt="Merkit" class="w-8 h-8 rounded-lg group-hover:scale-105 transition-transform" />
+        <span class="text-lg font-display font-semibold text-ink-900 tracking-tight">Merkit</span>
       </a>
 
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="#features" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="#features" class="px-4 py-2 text-sm text-ink-600 hover:text-ink-900 transition-colors rounded-lg hover:bg-cream-200/50">
           機能
         </a>
+        <a href="#demo" class="px-4 py-2 text-sm text-ink-600 hover:text-ink-900 transition-colors rounded-lg hover:bg-cream-200/50">
+          デモ
+        </a>
+        <a href="#pricing" class="px-4 py-2 text-sm text-ink-600 hover:text-ink-900 transition-colors rounded-lg hover:bg-cream-200/50">
+          料金
+        </a>
+        <a href="#reviews" class="px-4 py-2 text-sm text-ink-600 hover:text-ink-900 transition-colors rounded-lg hover:bg-cream-200/50">
+          レビュー
+        </a>
+        <div class="w-px h-5 bg-cream-300 mx-2"></div>
         <a
           href={ctaUrl}
-          class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white rounded-lg cta-gradient btn-glow hover:opacity-90 transition-all"
+          class="ml-2 px-5 py-2.5 text-sm font-medium text-white bg-ink-900 rounded-lg hover:bg-ink-800 transition-all hover:-translate-y-0.5 hover:shadow-lg"
         >
-          Chromeに追加
+          無料で始める
         </a>
       </nav>
 
-      <button class="md:hidden p-2 text-gray-600" id="mobile-menu-btn" aria-label="メニュー" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      <!-- Mobile Menu Button -->
+      <button
+        class="md:hidden w-10 h-10 flex items-center justify-center text-ink-700 hover:bg-cream-200 rounded-lg transition-colors"
+        id="mobile-menu-btn"
+        aria-label="メニュー"
+        aria-expanded="false"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
         </svg>
       </button>
     </div>
   </div>
 
-  <!-- Mobile menu -->
-  <div class="hidden md:hidden bg-white border-t border-gray-100" id="mobile-menu">
-    <div class="px-6 py-4 space-y-4">
-      <a href="#features" class="block text-gray-600 hover:text-gray-900 transition-colors font-medium">
+  <!-- Mobile Menu -->
+  <div class="hidden md:hidden bg-cream-50 border-t border-cream-200" id="mobile-menu">
+    <div class="px-6 py-4 space-y-1">
+      <a href="#features" class="block px-4 py-3 text-ink-700 hover:bg-cream-200 rounded-lg transition-colors">
         機能
       </a>
-      <a
-        href={ctaUrl}
-        class="block w-full text-center px-4 py-2 text-sm font-semibold text-white rounded-lg cta-gradient"
-      >
-        Chromeに追加
+      <a href="#demo" class="block px-4 py-3 text-ink-700 hover:bg-cream-200 rounded-lg transition-colors">
+        デモ
       </a>
+      <a href="#pricing" class="block px-4 py-3 text-ink-700 hover:bg-cream-200 rounded-lg transition-colors">
+        料金
+      </a>
+      <a href="#reviews" class="block px-4 py-3 text-ink-700 hover:bg-cream-200 rounded-lg transition-colors">
+        レビュー
+      </a>
+      <a href="#contact" class="block px-4 py-3 text-ink-700 hover:bg-cream-200 rounded-lg transition-colors">
+        お問い合わせ
+      </a>
+      <div class="pt-2">
+        <a
+          href={ctaUrl}
+          class="block w-full text-center px-4 py-3 text-sm font-medium text-white bg-ink-900 rounded-lg"
+        >
+          無料で始める
+        </a>
+      </div>
     </div>
   </div>
 </header>

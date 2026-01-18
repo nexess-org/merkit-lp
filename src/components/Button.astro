@@ -8,11 +8,11 @@ interface Props {
 const { href, variant = "primary", size = "md" } = Astro.props;
 
 const baseClasses =
-  "inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200";
+  "inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300";
 
 const variantClasses = {
-  primary: "cta-gradient text-white btn-glow hover:opacity-90",
-  secondary: "bg-white text-gray-900 border border-gray-200 hover:bg-gray-50 hover:border-gray-300",
+  primary: "btn-primary text-white",
+  secondary: "btn-secondary text-white",
 };
 
 const sizeClasses = {
