@@ -2,126 +2,114 @@
 const testimonials = [
   {
     content: "フリマアシストより断然使いやすい！UIがシンプルで直感的だから、迷わず操作できる。乗り換えて正解でした。",
-    author: "出品歴3年",
-    role: "アパレル出品者",
+    author: "アパレル出品者",
+    years: "出品歴3年",
     rating: 5,
   },
   {
     content: "毎日の値下げ作業が5分で終わるようになった。100商品以上出品してるけど、もうこれなしでは考えられない。",
-    author: "出品歴5年",
-    role: "せどらー",
+    author: "せどらー",
+    years: "出品歴5年",
     rating: 5,
   },
   {
     content: "テンプレート機能が神。商品名や価格を自動で挿入してくれるから、コメント投稿も一瞬。時短効果がすごい。",
-    author: "出品歴2年",
-    role: "ハンドメイド作家",
-    rating: 5,
-  },
-  {
-    content: "他のツールは複雑すぎたけど、Merkitはシンプルで使いやすい。初心者でもすぐに使いこなせた。",
-    author: "出品歴1年",
-    role: "副業出品者",
+    author: "ハンドメイド作家",
+    years: "出品歴2年",
     rating: 5,
   },
 ];
 
-const renderStars = (rating: number) => {
-  return Array(5).fill(0).map((_, i) => i < rating);
-};
+const stats = [
+  { value: "500+", label: "アクティブユーザー" },
+  { value: "50万+", label: "処理された商品" },
+  { value: "4.9", label: "平均評価" },
+  { value: "95%", label: "継続率" },
+];
 ---
 
-<section id="reviews" class="py-24 md:py-32 section-darker relative overflow-hidden">
-  <!-- Background pattern -->
-  <div class="absolute inset-0 pattern-grid opacity-50"></div>
-
-  <!-- Decorative orbs -->
-  <div class="orb orb-red w-80 h-80 top-0 left-1/4 opacity-20"></div>
-  <div class="orb orb-white w-64 h-64 bottom-20 right-10 opacity-10"></div>
+<section id="reviews" class="py-20 md:py-28 bg-cream-50 relative overflow-hidden">
+  <!-- Background decoration -->
+  <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-cream-100 to-transparent"></div>
 
   <div class="max-w-6xl mx-auto px-6 relative z-10">
     <!-- Section header -->
-    <div class="text-center mb-16 scroll-animate">
-      <span class="badge badge-primary mb-4">Reviews</span>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 section-title">
+    <div class="max-w-2xl scroll-reveal">
+      <span class="badge badge-accent">レビュー</span>
+      <h2 class="mt-4 text-3xl md:text-4xl font-display font-bold text-ink-900 tracking-tight">
         ユーザーの声
       </h2>
-      <p class="text-lg text-dark-200 section-subtitle">
-        多くの出品者に選ばれています
+      <p class="mt-4 text-ink-600 leading-relaxed">
+        多くの出品者の方にご利用いただいています。
       </p>
     </div>
 
-    <!-- Testimonials grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Testimonials -->
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
       {testimonials.map((testimonial, index) => (
-        <div
-          class="testimonial-card rounded-2xl p-8 card-hover scroll-animate"
-          style={`animation-delay: ${0.1 * (index + 1)}s`}
+        <article
+          class="card p-6 relative scroll-reveal"
+          style={`transition-delay: ${index * 0.1}s`}
         >
+          <!-- Quote mark -->
+          <span class="quote-mark">"</span>
+
           <!-- Stars -->
-          <div class="flex gap-1 mb-4">
-            {renderStars(testimonial.rating).map((filled) => (
+          <div class="flex gap-0.5 mb-4 relative z-10">
+            {Array(5).fill(0).map((_, i) => (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill={filled ? "currentColor" : "none"}
-                stroke="currentColor"
-                class={`w-5 h-5 ${filled ? 'text-yellow-400' : 'text-dark-500'}`}
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                class={`w-4 h-4 ${i < testimonial.rating ? 'star-filled' : 'star-empty'}`}
               >
-                <path
-                  fill-rule="evenodd"
-                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-                  clip-rule="evenodd"
-                />
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
               </svg>
             ))}
           </div>
 
           <!-- Content -->
-          <p class="text-white text-lg leading-relaxed mb-6 relative z-10">
+          <p class="text-ink-700 leading-relaxed mb-6 relative z-10">
             {testimonial.content}
           </p>
 
           <!-- Author -->
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500/30 to-primary-700/30 flex items-center justify-center border border-primary-500/20">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary-400">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+          <div class="flex items-center gap-3 relative z-10">
+            <div class="w-10 h-10 rounded-full bg-cream-200 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-ink-400">
+                <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
               </svg>
             </div>
             <div>
-              <p class="text-white font-semibold">{testimonial.author}</p>
-              <p class="text-dark-300 text-sm">{testimonial.role}</p>
+              <p class="font-medium text-ink-900 text-sm">{testimonial.author}</p>
+              <p class="text-xs text-ink-500">{testimonial.years}</p>
             </div>
           </div>
-        </div>
+        </article>
       ))}
     </div>
 
-    <!-- Stats row -->
-    <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 scroll-animate" style="animation-delay: 0.5s;">
-      <div class="text-center">
-        <div class="text-4xl md:text-5xl font-bold text-white font-display mb-2">500+</div>
-        <div class="text-dark-300 text-sm">アクティブユーザー</div>
-      </div>
-      <div class="text-center">
-        <div class="text-4xl md:text-5xl font-bold text-white font-display mb-2">50万+</div>
-        <div class="text-dark-300 text-sm">処理された商品</div>
-      </div>
-      <div class="text-center">
-        <div class="text-4xl md:text-5xl font-bold text-white font-display mb-2">4.9</div>
-        <div class="text-dark-300 text-sm">平均評価</div>
-      </div>
-      <div class="text-center">
-        <div class="text-4xl md:text-5xl font-bold text-white font-display mb-2">95%</div>
-        <div class="text-dark-300 text-sm">継続率</div>
+    <!-- Stats -->
+    <div class="mt-16 scroll-reveal" style="transition-delay: 0.4s;">
+      <div class="bg-ink-900 rounded-2xl p-8 md:p-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat) => (
+            <div class="text-center">
+              <p class="display-number text-4xl md:text-5xl text-white">
+                {stat.value}
+              </p>
+              <p class="mt-2 text-sm text-ink-300">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <script>
-  // Scroll animation observer
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -133,7 +121,7 @@ const renderStars = (rating: number) => {
     { threshold: 0.1 }
   );
 
-  document.querySelectorAll('#reviews .scroll-animate').forEach((el) => {
+  document.querySelectorAll('#reviews .scroll-reveal').forEach((el) => {
     observer.observe(el);
   });
 </script>
