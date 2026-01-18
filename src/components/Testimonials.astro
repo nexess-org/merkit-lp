@@ -20,12 +20,6 @@ const testimonials = [
   },
 ];
 
-const stats = [
-  { value: "500+", label: "アクティブユーザー" },
-  { value: "50万+", label: "処理された商品" },
-  { value: "4.9", label: "平均評価" },
-  { value: "95%", label: "継続率" },
-];
 ---
 
 <section id="reviews" class="py-20 md:py-28 bg-cream-50 relative overflow-hidden">
@@ -89,23 +83,6 @@ const stats = [
       ))}
     </div>
 
-    <!-- Stats -->
-    <div class="mt-16 scroll-reveal" style="transition-delay: 0.4s;">
-      <div class="bg-ink-900 rounded-2xl p-8 md:p-12">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat) => (
-            <div class="text-center">
-              <p class="display-number text-4xl md:text-5xl text-white">
-                {stat.value}
-              </p>
-              <p class="mt-2 text-sm text-ink-300">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
