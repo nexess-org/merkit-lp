@@ -1,0 +1,139 @@
+---
+const testimonials = [
+  {
+    content: "フリマアシストより断然使いやすい！UIがシンプルで直感的だから、迷わず操作できる。乗り換えて正解でした。",
+    author: "出品歴3年",
+    role: "アパレル出品者",
+    rating: 5,
+  },
+  {
+    content: "毎日の値下げ作業が5分で終わるようになった。100商品以上出品してるけど、もうこれなしでは考えられない。",
+    author: "出品歴5年",
+    role: "せどらー",
+    rating: 5,
+  },
+  {
+    content: "テンプレート機能が神。商品名や価格を自動で挿入してくれるから、コメント投稿も一瞬。時短効果がすごい。",
+    author: "出品歴2年",
+    role: "ハンドメイド作家",
+    rating: 5,
+  },
+  {
+    content: "他のツールは複雑すぎたけど、Merkitはシンプルで使いやすい。初心者でもすぐに使いこなせた。",
+    author: "出品歴1年",
+    role: "副業出品者",
+    rating: 5,
+  },
+];
+
+const renderStars = (rating: number) => {
+  return Array(5).fill(0).map((_, i) => i < rating);
+};
+---
+
+<section id="reviews" class="py-24 md:py-32 section-darker relative overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 pattern-grid opacity-50"></div>
+
+  <!-- Decorative orbs -->
+  <div class="orb orb-red w-80 h-80 top-0 left-1/4 opacity-20"></div>
+  <div class="orb orb-white w-64 h-64 bottom-20 right-10 opacity-10"></div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <!-- Section header -->
+    <div class="text-center mb-16 scroll-animate">
+      <span class="badge badge-primary mb-4">Reviews</span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 section-title">
+        ユーザーの声
+      </h2>
+      <p class="text-lg text-dark-200 section-subtitle">
+        多くの出品者に選ばれています
+      </p>
+    </div>
+
+    <!-- Testimonials grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {testimonials.map((testimonial, index) => (
+        <div
+          class="testimonial-card rounded-2xl p-8 card-hover scroll-animate"
+          style={`animation-delay: ${0.1 * (index + 1)}s`}
+        >
+          <!-- Stars -->
+          <div class="flex gap-1 mb-4">
+            {renderStars(testimonial.rating).map((filled) => (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill={filled ? "currentColor" : "none"}
+                stroke="currentColor"
+                class={`w-5 h-5 ${filled ? 'text-yellow-400' : 'text-dark-500'}`}
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            ))}
+          </div>
+
+          <!-- Content -->
+          <p class="text-white text-lg leading-relaxed mb-6 relative z-10">
+            {testimonial.content}
+          </p>
+
+          <!-- Author -->
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500/30 to-primary-700/30 flex items-center justify-center border border-primary-500/20">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary-400">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-white font-semibold">{testimonial.author}</p>
+              <p class="text-dark-300 text-sm">{testimonial.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Stats row -->
+    <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 scroll-animate" style="animation-delay: 0.5s;">
+      <div class="text-center">
+        <div class="text-4xl md:text-5xl font-bold text-white font-display mb-2">500+</div>
+        <div class="text-dark-300 text-sm">アクティブユーザー</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl md:text-5xl font-bold text-white font-display mb-2">50万+</div>
+        <div class="text-dark-300 text-sm">処理された商品</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl md:text-5xl font-bold text-white font-display mb-2">4.9</div>
+        <div class="text-dark-300 text-sm">平均評価</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl md:text-5xl font-bold text-white font-display mb-2">95%</div>
+        <div class="text-dark-300 text-sm">継続率</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Scroll animation observer
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('#reviews .scroll-animate').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

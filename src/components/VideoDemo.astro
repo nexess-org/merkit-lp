@@ -1,0 +1,113 @@
+---
+// TODO: Replace with actual video URL (YouTube embed or mp4 file)
+// Example: "https://www.youtube.com/embed/VIDEO_ID" or "/videos/demo.mp4"
+const videoUrl = "";
+const isYouTube = videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be');
+---
+
+<section id="demo" class="py-24 md:py-32 section-dark relative overflow-hidden">
+  <!-- Background decorations -->
+  <div class="orb orb-red w-96 h-96 -top-48 -right-48 opacity-30"></div>
+  <div class="orb orb-white w-64 h-64 bottom-20 -left-32 opacity-20"></div>
+
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <!-- Section header -->
+    <div class="text-center mb-16 scroll-animate">
+      <span class="badge badge-primary mb-4">Demo</span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 section-title">
+        実際の操作を見る
+      </h2>
+      <p class="text-lg text-dark-200 section-subtitle">
+        たった数クリックで、何百もの商品価格を一括変更
+      </p>
+    </div>
+
+    <!-- Video container -->
+    <div class="scroll-animate" style="animation-delay: 0.2s;">
+      <div class="video-container aspect-video">
+        {videoUrl ? (
+          isYouTube ? (
+            <iframe
+              src={videoUrl}
+              title="Merkit デモ動画"
+              class="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          ) : (
+            <video
+              src={videoUrl}
+              controls
+              class="w-full h-full object-cover"
+              poster="/images/video-poster.jpg"
+            >
+              <track kind="captions" />
+            </video>
+          )
+        ) : (
+          <!-- Placeholder when no video URL is set -->
+          <div class="w-full h-full flex flex-col items-center justify-center bg-dark-800 min-h-[300px] md:min-h-[400px]">
+            <div class="w-20 h-20 rounded-full bg-primary-500/20 flex items-center justify-center mb-6 animate-pulse-glow">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-primary-400 ml-1">
+                <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <p class="text-dark-300 text-lg font-medium mb-2">デモ動画</p>
+            <p class="text-dark-400 text-sm">Coming Soon</p>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- Feature highlights below video -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      <div class="text-center scroll-animate" style="animation-delay: 0.3s;">
+        <div class="w-12 h-12 mx-auto mb-4 rounded-xl icon-container flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+          </svg>
+        </div>
+        <h3 class="text-white font-semibold mb-1">高速処理</h3>
+        <p class="text-dark-300 text-sm">100件の変更も数分で完了</p>
+      </div>
+
+      <div class="text-center scroll-animate" style="animation-delay: 0.4s;">
+        <div class="w-12 h-12 mx-auto mb-4 rounded-xl icon-container flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+          </svg>
+        </div>
+        <h3 class="text-white font-semibold mb-1">安全設計</h3>
+        <p class="text-dark-300 text-sm">BAN対策の遅延機能搭載</p>
+      </div>
+
+      <div class="text-center scroll-animate" style="animation-delay: 0.5s;">
+        <div class="w-12 h-12 mx-auto mb-4 rounded-xl icon-container flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+          </svg>
+        </div>
+        <h3 class="text-white font-semibold mb-1">簡単操作</h3>
+        <p class="text-dark-300 text-sm">直感的なUIで誰でも使える</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Scroll animation observer
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('#demo .scroll-animate').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

@@ -22,9 +22,13 @@ const { title, description } = Astro.props;
     <meta name="twitter:card" content="summary_large_image" />
     <!-- TODO: Update favicon after icon is finalized -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
-  <body class="bg-white text-gray-800 font-sans antialiased">
+  <body class="bg-dark-900 text-dark-100 font-sans antialiased">
     <slot />
   </body>
 </html>

@@ -6,26 +6,38 @@ interface Props {
 const { ctaUrl } = Astro.props;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+<header class="fixed top-0 left-0 right-0 z-50 header-glass">
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex items-center justify-between h-16">
-      <a href="/" class="text-xl font-bold text-gray-900">
+      <a href="/" class="text-xl font-bold text-white font-display tracking-tight">
         Merkit
       </a>
 
       <nav class="hidden md:flex items-center gap-8">
-        <a href="#features" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">
+        <a href="#features" class="text-dark-200 hover:text-white transition-colors text-sm font-medium">
           機能
+        </a>
+        <a href="#demo" class="text-dark-200 hover:text-white transition-colors text-sm font-medium">
+          デモ
+        </a>
+        <a href="#pricing" class="text-dark-200 hover:text-white transition-colors text-sm font-medium">
+          料金
+        </a>
+        <a href="#reviews" class="text-dark-200 hover:text-white transition-colors text-sm font-medium">
+          レビュー
+        </a>
+        <a href="#contact" class="text-dark-200 hover:text-white transition-colors text-sm font-medium">
+          お問い合わせ
         </a>
         <a
           href={ctaUrl}
-          class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white rounded-lg cta-gradient btn-glow hover:opacity-90 transition-all"
+          class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white rounded-lg btn-primary glow-red-sm transition-all"
         >
-          Chromeに追加
+          無料で始める
         </a>
       </nav>
 
-      <button class="md:hidden p-2 text-gray-600" id="mobile-menu-btn" aria-label="メニュー" aria-expanded="false">
+      <button class="md:hidden p-2 text-dark-200 hover:text-white transition-colors" id="mobile-menu-btn" aria-label="メニュー" aria-expanded="false">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
@@ -34,16 +46,28 @@ const { ctaUrl } = Astro.props;
   </div>
 
   <!-- Mobile menu -->
-  <div class="hidden md:hidden bg-white border-t border-gray-100" id="mobile-menu">
+  <div class="hidden md:hidden glass border-t border-white/5" id="mobile-menu">
     <div class="px-6 py-4 space-y-4">
-      <a href="#features" class="block text-gray-600 hover:text-gray-900 transition-colors font-medium">
+      <a href="#features" class="block text-dark-200 hover:text-white transition-colors font-medium">
         機能
+      </a>
+      <a href="#demo" class="block text-dark-200 hover:text-white transition-colors font-medium">
+        デモ
+      </a>
+      <a href="#pricing" class="block text-dark-200 hover:text-white transition-colors font-medium">
+        料金
+      </a>
+      <a href="#reviews" class="block text-dark-200 hover:text-white transition-colors font-medium">
+        レビュー
+      </a>
+      <a href="#contact" class="block text-dark-200 hover:text-white transition-colors font-medium">
+        お問い合わせ
       </a>
       <a
         href={ctaUrl}
-        class="block w-full text-center px-4 py-2 text-sm font-semibold text-white rounded-lg cta-gradient"
+        class="block w-full text-center px-4 py-3 text-sm font-semibold text-white rounded-lg btn-primary"
       >
-        Chromeに追加
+        無料で始める
       </a>
     </div>
   </div>
