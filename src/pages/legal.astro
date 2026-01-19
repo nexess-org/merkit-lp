@@ -1,0 +1,134 @@
+---
+import Layout from "../components/Layout.astro";
+
+const currentYear = new Date().getFullYear();
+
+// 特定商取引法に基づく表記の情報
+const legalInfo = {
+  businessName: "nexess",
+  representative: "請求があった場合に遅滞なく開示いたします",
+  address: "請求があった場合に遅滞なく開示いたします",
+  email: "hoshino.ryu@nexess.jp",
+  phone: "メールにてお問い合わせください",
+  price: "月額 ¥2,980（税込）",
+  paymentMethod: "クレジットカード決済",
+  paymentTiming: "ご利用開始時に決済、以降は毎月同日に自動決済",
+  serviceStart: "お支払い完了後、即時ご利用いただけます",
+  trialPeriod: "初回お申し込みから1週間は無料トライアル期間となります",
+  cancellation: "マイページからいつでもキャンセル可能です。キャンセル後も契約期間終了まではサービスをご利用いただけます。",
+  refundPolicy: "デジタルコンテンツの性質上、サービス提供開始後の返金は原則としてお受けしておりません。無料トライアル期間中にサービス内容をご確認ください。",
+};
+---
+
+<Layout
+  title="特定商取引法に基づく表記 | Merkit"
+  description="Merkitの特定商取引法に基づく表記ページです。"
+  canonicalUrl="https://merkit.app/legal"
+  noindex={true}
+>
+  <div class="min-h-screen flex flex-col">
+    <!-- Simple Header -->
+    <header class="bg-cream-50 border-b border-cream-300/50">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center h-16">
+          <a href="/" class="flex items-center gap-2 group">
+            <img src="/favicon.png" alt="Merkit" class="w-8 h-8 rounded-lg group-hover:scale-105 transition-transform" />
+            <span class="text-lg font-display font-semibold text-ink-900 tracking-tight">Merkit</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Legal Content -->
+    <main class="flex-1 py-16 md:py-24">
+      <div class="max-w-3xl mx-auto px-6">
+        <h1 class="text-3xl md:text-4xl font-display font-bold text-ink-900 mb-12">
+          特定商取引法に基づく表記
+        </h1>
+
+        <div class="space-y-8">
+          <dl class="divide-y divide-cream-200">
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm font-medium text-ink-900">販売業者</dt>
+              <dd class="mt-1 text-sm text-ink-600 sm:col-span-2 sm:mt-0">{legalInfo.businessName}</dd>
+            </div>
+
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm font-medium text-ink-900">運営責任者</dt>
+              <dd class="mt-1 text-sm text-ink-600 sm:col-span-2 sm:mt-0">{legalInfo.representative}</dd>
+            </div>
+
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm font-medium text-ink-900">所在地</dt>
+              <dd class="mt-1 text-sm text-ink-600 sm:col-span-2 sm:mt-0">{legalInfo.address}</dd>
+            </div>
+
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm font-medium text-ink-900">お問い合わせ</dt>
+              <dd class="mt-1 text-sm text-ink-600 sm:col-span-2 sm:mt-0">
+                <p>メール: <a href={`mailto:${legalInfo.email}`} class="text-accent-600 hover:underline">{legalInfo.email}</a></p>
+                <p class="mt-1">電話: {legalInfo.phone}</p>
+              </dd>
+            </div>
+
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm font-medium text-ink-900">販売価格</dt>
+              <dd class="mt-1 text-sm text-ink-600 sm:col-span-2 sm:mt-0">{legalInfo.price}</dd>
+            </div>
+
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm font-medium text-ink-900">お支払い方法</dt>
+              <dd class="mt-1 text-sm text-ink-600 sm:col-span-2 sm:mt-0">{legalInfo.paymentMethod}</dd>
+            </div>
+
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm font-medium text-ink-900">お支払い時期</dt>
+              <dd class="mt-1 text-sm text-ink-600 sm:col-span-2 sm:mt-0">{legalInfo.paymentTiming}</dd>
+            </div>
+
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm font-medium text-ink-900">サービス提供時期</dt>
+              <dd class="mt-1 text-sm text-ink-600 sm:col-span-2 sm:mt-0">{legalInfo.serviceStart}</dd>
+            </div>
+
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm font-medium text-ink-900">無料トライアル</dt>
+              <dd class="mt-1 text-sm text-ink-600 sm:col-span-2 sm:mt-0">{legalInfo.trialPeriod}</dd>
+            </div>
+
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm font-medium text-ink-900">キャンセル</dt>
+              <dd class="mt-1 text-sm text-ink-600 sm:col-span-2 sm:mt-0">{legalInfo.cancellation}</dd>
+            </div>
+
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+              <dt class="text-sm font-medium text-ink-900">返金ポリシー</dt>
+              <dd class="mt-1 text-sm text-ink-600 sm:col-span-2 sm:mt-0">{legalInfo.refundPolicy}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-cream-200">
+          <a
+            href="/"
+            class="inline-flex items-center text-sm text-ink-600 hover:text-ink-900 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 mr-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            トップページへ戻る
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="bg-cream-50 py-6 border-t border-cream-200">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <p class="text-ink-400 text-sm">
+          &copy; {currentYear} Merkit. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </div>
+</Layout>

@@ -4,9 +4,33 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description: string;
+  canonicalUrl?: string;
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, canonicalUrl = "https://merkit.app/", noindex = false } = Astro.props;
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Merkit",
+  "applicationCategory": "BrowserApplication",
+  "operatingSystem": "Chrome",
+  "description": "メルカリの出品価格を一括で変更できるChrome拡張機能。値下げ・値上げを効率化。",
+  "url": "https://merkit.app",
+  "offers": {
+    "@type": "Offer",
+    "price": "2980",
+    "priceCurrency": "JPY",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "3"
+  }
+};
 ---
 
 <!doctype html>
@@ -15,22 +39,41 @@ const { title, description } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/images/ogp.png" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="https://merkit.app/images/ogp.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Merkit" />
+    <meta property="og:locale" content="ja_JP" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/images/ogp.png" />
+    <meta name="twitter:image" content="https://merkit.app/images/ogp.png" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     <!-- Google Fonts - Distinctive Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <!-- Google Analytics 4 -->
+    {gaMeasurementId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}></script>
+        <script define:vars={{ gaMeasurementId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', gaMeasurementId);
+        </script>
+      </>
+    )}
     <title>{title}</title>
   </head>
   <body class="bg-cream-50 text-ink-900 antialiased">
