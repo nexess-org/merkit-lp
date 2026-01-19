@@ -6,6 +6,8 @@ const steps = [
     description: "メルカリの出品一覧ページで、変更したい商品にチェックを入れます。",
     image: "/images/step-1-select.png",
     imageAlt: "メルカリの出品一覧でMerkitツールバーが表示されている画面",
+    width: 1898,
+    height: 876,
   },
   {
     number: "02",
@@ -13,6 +15,8 @@ const steps = [
     description: "価格変更の金額や最低価格などを設定します。",
     image: "/images/step-2-configure.png",
     imageAlt: "Merkit拡張機能で価格変更の設定を入力している画面",
+    width: 370,
+    height: 619,
   },
   {
     number: "03",
@@ -20,6 +24,8 @@ const steps = [
     description: "実行ボタンを押すと、選択した商品が順番に自動処理されます。",
     image: "/images/step-3-processing.png",
     imageAlt: "Merkitが商品を処理中の画面",
+    width: 389,
+    height: 359,
   },
   {
     number: "04",
@@ -27,6 +33,8 @@ const steps = [
     description: "すべての処理が完了すると、結果が表示されます。",
     image: "/images/step-4-complete.png",
     imageAlt: "Merkitの処理完了画面",
+    width: 410,
+    height: 340,
   },
 ];
 ---
@@ -47,7 +55,7 @@ const steps = [
     <!-- Steps with images -->
     <div class="mt-16 space-y-16 md:space-y-24">
       {steps.map((step, index) => (
-        <div class={`scroll-reveal grid md:grid-cols-2 gap-8 md:gap-12 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`} style={`transition-delay: ${index * 0.1}s`}>
+        <div class="scroll-reveal grid md:grid-cols-2 gap-8 md:gap-12 items-center" style={`transition-delay: ${index * 0.1}s`}>
           <!-- Text content -->
           <div class={index % 2 === 1 ? 'md:order-2' : ''}>
             <span class="text-6xl font-display font-bold text-cream-300 leading-none">
@@ -67,6 +75,8 @@ const steps = [
               <img
                 src={step.image}
                 alt={step.imageAlt}
+                width={step.width}
+                height={step.height}
                 class="rounded-lg w-full"
                 loading="lazy"
               />
