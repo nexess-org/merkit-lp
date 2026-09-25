@@ -1,0 +1,179 @@
+---
+import Layout from "../components/Layout.astro";
+
+const currentYear = new Date().getFullYear();
+
+const contactEmail = "hoshino.ryu@nexess.jp";
+const establishedAt = "2026年9月26日";
+
+// 取得する情報と利用目的（Chrome 拡張機能 Merkit と、このサイトで扱うもの）
+const collectedData = [
+  {
+    name: "アカウント情報",
+    detail: "メールアドレス、パスワード（ハッシュ化して保存し、当方が平文を知ることはありません）",
+    purpose: "ログイン、本人確認、ご契約に関するご連絡",
+  },
+  {
+    name: "ご契約・お支払いに関する情報",
+    detail:
+      "契約状況（無料トライアル・有料プラン・解約など）、決済サービス上の顧客ID・契約ID。クレジットカード情報は決済サービス（Stripe）が直接取得し、当方は保持しません",
+    purpose: "料金の請求、契約状態に応じた機能の提供",
+  },
+  {
+    name: "エラー診断情報",
+    detail:
+      "一括操作（価格変更・コメント投稿・コメント削除・商品削除）が失敗したときの、操作の種類、失敗した段階、件数、拡張機能のバージョン、ブラウザの種類。商品名・商品URL・価格・コメント本文・メールアドレスなど、お客様やお取引を特定できる情報は含みません",
+    purpose: "メルカリの画面変更などによる不具合の検知と修正",
+  },
+  {
+    name: "このサイトの閲覧情報",
+    detail: "Google アナリティクスによるアクセス情報（閲覧したページ、ブラウザの種類など。Cookie を使用します）",
+    purpose: "サイトの利用状況の把握と改善",
+  },
+  {
+    name: "お問い合わせ内容",
+    detail: "お問い合わせフォーム（Google フォーム）に入力いただいた内容",
+    purpose: "お問い合わせへの回答",
+  },
+];
+
+// 外部サービスへの提供（業務委託）
+const processors = [
+  { name: "Supabase", role: "アカウント情報と契約情報の保存、認証" },
+  { name: "Stripe", role: "クレジットカード決済" },
+  { name: "Sentry", role: "エラー診断情報の収集" },
+  { name: "Google（Google アナリティクス、Google フォーム）", role: "サイトの閲覧情報の分析、お問い合わせの受付" },
+];
+---
+
+<Layout
+  title="プライバシーポリシー | Merkit"
+  description="Merkitのプライバシーポリシーです。"
+  canonicalUrl="https://merkit.app/privacy"
+  noindex={true}
+>
+  <div class="min-h-screen flex flex-col">
+    <!-- Simple Header -->
+    <header class="bg-cream-50 border-b border-cream-300/50">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center h-16">
+          <a href="/" class="flex items-center gap-2 group">
+            <img src="/favicon.png" alt="Merkit" class="w-8 h-8 rounded-lg group-hover:scale-105 transition-transform" />
+            <span class="text-lg font-display font-semibold text-ink-900 tracking-tight">Merkit</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Privacy Content -->
+    <main class="flex-1 py-16 md:py-24">
+      <div class="max-w-3xl mx-auto px-6">
+        <h1 class="text-3xl md:text-4xl font-display font-bold text-ink-900 mb-12">
+          プライバシーポリシー
+        </h1>
+
+        <div class="space-y-10 text-sm text-ink-600 leading-relaxed">
+          <p>
+            nexess（以下「当方」）は、Chrome 拡張機能「Merkit」およびこのサイト（以下あわせて「本サービス」）における、お客様の情報の取り扱いを以下のとおり定めます。
+          </p>
+
+          <section>
+            <h2 class="text-lg font-semibold text-ink-900 mb-4">1. 取得する情報と利用目的</h2>
+            <dl class="divide-y divide-cream-200">
+              {collectedData.map((item) => (
+                <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+                  <dt class="font-medium text-ink-900">{item.name}</dt>
+                  <dd class="mt-1 sm:col-span-2 sm:mt-0">
+                    <p>{item.detail}</p>
+                    <p class="mt-1 text-ink-500">利用目的: {item.purpose}</p>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-ink-900 mb-4">2. メルカリのページ上の情報について</h2>
+            <p>
+              Merkit は、お客様がメルカリで開いているページ上で動作し、出品中の商品名・価格・コメントなどを読み取って一括操作を行います。これらの情報はお客様のブラウザ内でのみ扱い、当方のサーバーには送信しません。一括操作のために、メルカリのログイン状態（ブラウザに保存されている認証情報）を使ってメルカリのサーバーと通信することがありますが、この認証情報を当方が取得することはありません。
+            </p>
+            <p class="mt-3">
+              価格変更やコメントのテンプレートなどの設定は、お客様のブラウザ内（拡張機能のストレージ）に保存され、当方のサーバーには送信しません。
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-ink-900 mb-4">3. 外部サービスの利用</h2>
+            <p class="mb-4">
+              当方は、本サービスの提供のため、以下の外部サービスに情報の取り扱いを委託しています。これらのサービスは日本国外にサーバーを置いている場合があります。
+            </p>
+            <ul class="list-disc pl-5 space-y-1">
+              {processors.map((p) => (
+                <li><span class="font-medium text-ink-900">{p.name}</span>: {p.role}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-ink-900 mb-4">4. 第三者への提供</h2>
+            <p>
+              当方は、法令に基づく場合を除き、お客様の同意なく個人情報を第三者に提供しません。前項の委託先への提供は、利用目的の達成に必要な範囲に限ります。取得した情報を販売することはありません。
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-ink-900 mb-4">5. 保存期間</h2>
+            <p>
+              アカウント情報と契約情報は、アカウントが存在する間保存します。エラー診断情報は、収集から30日で削除されます。
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-ink-900 mb-4">6. 開示・訂正・削除のご請求</h2>
+            <p>
+              ご自身の情報の開示・訂正・利用停止・削除（アカウントの削除を含む）をご希望の場合は、下記の連絡先までご連絡ください。ご本人であることを確認のうえ、遅滞なく対応します。
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-ink-900 mb-4">7. お問い合わせ先</h2>
+            <p>
+              nexess<br />
+              メール: <a href={`mailto:${contactEmail}`} class="text-accent-600 hover:underline">{contactEmail}</a>
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg font-semibold text-ink-900 mb-4">8. 改定</h2>
+            <p>
+              本ポリシーの内容は、必要に応じて改定することがあります。重要な変更がある場合は、このページでお知らせします。
+            </p>
+          </section>
+
+          <p class="text-ink-500">制定日: {establishedAt}</p>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-cream-200">
+          <a
+            href="/"
+            class="inline-flex items-center text-sm text-ink-600 hover:text-ink-900 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 mr-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            トップページへ戻る
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="bg-cream-50 py-6 border-t border-cream-200">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <p class="text-ink-400 text-sm">
+          &copy; {currentYear} Merkit. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </div>
+</Layout>
